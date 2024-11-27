@@ -9,7 +9,7 @@ function createPopulation() {
     }
 }
 
-// Boucle principale de l'algorithme génétique
+// Boucle principale de l'algorithme génétique dbdfyudbvyfey
 function lance() {
     getFormValues();
     validationForm();
