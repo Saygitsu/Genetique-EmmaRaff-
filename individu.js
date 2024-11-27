@@ -1,52 +1,28 @@
-// définition des individus
-
-var genNumber = 0; // nombre de gènes
-var individuSize = 0; // taille d'un individu
-
-// calcule le nombre de gènes
+// Calcul du nombre de gènes
 genNumber = genes.length;
 
-// taille d'un individu
-// calcul de la taille d'un individu (somme des tailles des gènes)
-const reducer = (accumulator, currentValue) => accumulator + currentValue.size;
-individuSize = genes.reduce(reducer, 0);
+// Taille d'un individu (somme des tailles des gènes)
+individuSize = genes.reduce((accumulator, gene) => accumulator + gene.size, 0);
 
-// création aléatoire du génotype
+// Création aléatoire d'un génotype
 function randomGenotype() {
     var genotype = [];
     for (var i = 0; i < individuSize; i++) {
-        genotype[i] = Math.round(Math.random());
+        genotype.push(Math.round(Math.random())); // Génère des bits aléatoires (0 ou 1)
     }
     return genotype;
 }
 
-
-// function decodeGenotype : convertie un génotype en entier
+// Fonction pour décoder un génotype en phénotype (A, B, C)
 function decodeGenotype(genotype) {
-    var x = [];
-    var offset = 0;
-    
-    // console.log(genNumber);
-
-    for (var i = 0; i < genNumber; i++) {
-        var geneSize = genes[i].size;
-        // console.log(geneSize);
-
-        var gene = genotype.slice(offset, offset + geneSize);
-        // console.log(gene);
-        x.push(genes[1].decode(gene));
-        offset += geneSize;
-    }
-    return x;
+    return decodeDiameters(genotype); // Appelle la fonction définie dans `probleme.js`
 }
 
-
-// defini un individu avec un génotype et un phénotype
+// Définir un individu avec génotype, phénotype et fitness
 function Individu() {
-    this.genotype = [];
-    this.phenotype = [];
-    this.fitness = 0;
-    this.genotype = randomGenotype();
-    this.phenotype = decodeGenotype(this.genotype);
-    this.fitness = fitness(this.phenotype);
+    do {
+        this.genotype = randomGenotype();
+        this.phenotype = decodeGenotype(this.genotype); // Décodage en [A, B, C]
+    } while (this.phenotype.reduce((sum, d) => sum + d, 0) !== 100); // Vérifie la contrainte de somme
+    this.fitness = fitness(this.phenotype); // Calcule la fitness
 }
