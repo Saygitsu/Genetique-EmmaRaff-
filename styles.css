@@ -1,62 +1,29 @@
-/* FILEPATH: style.css */
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #000;
-    color: #fff;
+#population table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-h1, h2, h3 {
-    font-family: 'Orbitron', sans-serif;
+#population th, #population td {
+    border: 1px solid #555;
+    padding: 10px;
+    text-align: center;
+}
+
+#population th {
+    background-color: #444;
     color: #00ff00;
 }
 
-p {
-    font-size: 16px;
-    line-height: 1.5;
+#population tr:nth-child(even) {
+    background-color: #222;
 }
 
-a {
-    color: #00ffff;
-    text-decoration: none;
-}
-
-header {
-    background-color: #333;
-    padding: 20px;
-    text-align: center;
-}
-
-footer {
-    background-color: #333;
-    padding: 20px;
-    text-align: center;
+#resultats {
+    background-color: #222;
+    border: 1px solid #555;
+    padding: 10px;
+    margin-top: 20px;
     color: #fff;
-}
-#parameters {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#parameters label {
-    text-align: right;
-    margin-right: 10px;
-    flex-basis: 45%;
-}
-
-#parameters input[type="submit"] {
-    margin-left: auto;
-    flex-basis: 100%;
-}
-
-.formWrapper {
-    width: 50%;
-}
-
-.presentation {
-    background-color: #333;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #040404;
-    border-radius: 4px;
+    text-align: center;
 }
